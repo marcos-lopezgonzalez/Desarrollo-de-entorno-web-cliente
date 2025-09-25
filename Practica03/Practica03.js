@@ -171,6 +171,10 @@ function ejercicio18() {
 }
 
 function ejercicio19() {
+  //let nombre = "Marcos";
+  //let apellidos = "López";
+  //let salario = 900;
+  //let edad = 46;
   let nombre = prompt("Escribe tu nombre:");
   let apellidos = prompt("Escribe tus apellidos:");
   let salario = Number(prompt("Escribe tu salario:"));
@@ -178,17 +182,22 @@ function ejercicio19() {
 
   if (1000 < salario && salario < 2000) {
     if (edad > 45) {
-      salario += salario*0.03
+      salario += salario * 0.03
     } else {
-      salario += salario*0.1
+      salario += salario * 0.1
     }
   } else if (salario < 1000) {
     if (edad < 30) {
       salario = 1100;
     } else if (30 < edad && edad < 45) {
-      salario += salario*0.03;
-    }  else {
-      salario += salario*0.15;
+      salario += salario * 0.03;
+    } else {
+      salario += salario * 0.15;
     }
   }
+
+  alert("Nombre: " + nombre +
+    "\nApellidos: " + apellidos +
+    "\nSalario: " + salario +
+    "\nEdad: " + edad);
 }
