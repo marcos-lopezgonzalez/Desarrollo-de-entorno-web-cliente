@@ -178,7 +178,7 @@ function ejercicio11() {
 }
 
 function ejercicio12() {
-    let notas = [5, 7, 8, 4, 10];
+    const notas = [5, 7, 8, 4, 10];
     let total = 0;
 
     for (let i = 0; i < notas.length; i++) {
@@ -186,4 +186,98 @@ function ejercicio12() {
     }
 
     console.log(`Media: ${total / notas.length}`);
+}
+
+function ejercicio13() {
+    let precios = [12, 25, 40, 18, 9, 30];
+
+    for (let i = 0; i < precios.length; i++) {
+        if (precios[i] <= 15) {
+            console.log(`Precio ${precios[i]} <= 15`);
+            break;
+        }
+
+        if (i == precios.length - 1)
+            console.log("No se ha encontrado");
+    }
+}
+
+function ejercicio14() {
+    let mensajes = [];
+
+    for (let i = 0; i < 5; i++) {
+        mensajes.push(prompt("Introduce un mensaje"));
+        if (mensajes[i] === null || mensajes[i] === "")
+            continue;
+        else
+            console.log(mensajes[i]);
+    }
+}
+
+function ejercicio15() {
+    let listaProductos = ["Pepino", "Tomate", "Cereales", "Leche", "Helado"];
+
+    for (let i = 0; i < listaProductos.length; i++) {
+        console.log(`Producto ${i + 1}: ${listaProductos[i]}`);
+    }
+}
+
+function ejercicio16() {
+    const precios = [10, 20, 15, 30, 25];
+    let total = 0;
+
+    for (let i = 0; i < precios.length; i++) {
+        total += precios[i];
+    }
+
+    console.log(`Suma total: ${total}`);
+}
+
+function ejercicio17() {
+    const productos = ['pan', 'leche', 'huevos', 'arroz', 'manzanas'];
+    let buscarProducto = prompt("Introduce un alimento para buscar: ");
+
+    if (productos.includes(buscarProducto))
+        console.log(`El alimento ${buscarProducto} está en la lista`);
+    else
+        console.log("El alimento no está en la lista");
+}
+
+function ejercicio18() {
+    const stock = [12, 3, 7, 0, 9, 5];
+
+    for (let i = 0; i < stock.length; i++) {
+        if (stock[i] < 5)
+            console.log(stock[i]);
+    }
+}
+
+function ejercicio19() {
+    let tareas = [];
+
+    let nuevaTarea = prompt("Introduce una nueva tarea: ");
+
+    while (nuevaTarea.toLowerCase() !== "fin") {
+        tareas.push(nuevaTarea);
+        nuevaTarea = prompt("Introduce una nueva tarea: ");
+    }
+
+    console.log("Lista de tareas:");
+    for (let i = 0; i < tareas.length; i++)
+        console.log(`Tarea ${i + 1}: ${tareas[i]}`);
+}
+
+function ejercicio20() {
+    const notas = [3, 7, 9, 4, 5, 10, 6];
+    let suspensos = 0, aprobados = 0;
+
+    for (let i = 0; i < notas.length; i++) {
+        if (notas[i] < 5)
+            suspensos++;
+        else
+            aprobados++;
+    }
+
+    console.log(`Aprobados: ${aprobados}`);
+    console.log(`Suspensos: ${suspensos}`);
 }
