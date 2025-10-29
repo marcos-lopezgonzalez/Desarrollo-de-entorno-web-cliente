@@ -138,31 +138,33 @@ function ejercicio4() {
 
 function ejercicio5() {
     class Venta {
-        constructor(producto, cantidad) {
+        constructor(producto, cantidad, precio) {
             this.producto = producto;
             this.cantidad = cantidad;
-            this.total;
+            this.precio = precio;
+            this.total = 0;
         }
 
-        calcularTotal(precioUnitario) {
-            this.total = parseFloat((this.cantidad * precioUnitario).toFixed(2));
+        calcularTotal() {
+            this.total = parseFloat((this.cantidad * this.precio).toFixed(2));
         }
     }
 
     const ventas = [
-        new Venta("Monitor", 20),
-        new Venta("Teclado", 12),
-        new Venta("Raton", 23),
-        new Venta("Alfombrilla", 4)
+        new Venta("Monitor", 20, 15.99),
+        new Venta("Teclado", 12, 8.99),
+        new Venta("Raton", 23, 5.99),
+        new Venta("Alfombrilla", 4, 3.99)
     ]
+    
 
-    let total = 0;
+    let totalVentas = 0;
     for (let i = 0; i < ventas.length; i++) {
-        ventas[i].calcularTotal(Math.random() * 25);
-        total += ventas[i].total;
+        ventas[i].calcularTotal();
+        totalVentas += parseFloat(ventas[i].total);
     }
 
-    return mostrar("Total: " + total.toFixed(2), "salida5");
+    return mostrar("Total: " + totalVentas.toFixed(2), "salida5");
 }
 
 function ejercicio6() {
@@ -216,9 +218,9 @@ function ejercicio7() {
         tareas[i].mostrarEstado();
     }
 
-    mostrar("--------------------------","salida7");
-    mostrar("   ACTUALIZANDO TAREAS","salida7");
-    mostrar("--------------------------","salida7");
+    mostrar("--------------------------", "salida7");
+    mostrar("   ACTUALIZANDO TAREAS", "salida7");
+    mostrar("--------------------------", "salida7");
     tareas[1].completar();
 
     for (let i = 0; i < tareas.length; i++) {
