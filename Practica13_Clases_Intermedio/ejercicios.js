@@ -127,11 +127,11 @@ function ejercicio03() {
         }
 
         aplicarDescuento(porcentaje) {
-            return "Precio descuento: " + parseFloat(this.precioBase * porcentaje / 100);
+            return "Precio descuento: " + parseFloat(this.precioBase * porcentaje / 100).toFixed(2);
         }
 
         mostrar() {
-            return `Nombre: ${this.nombre} Precio base: ${this.precioBase}` + this.precioConIVA() + this.aplicarDescuento(50);
+            return `Nombre: ${this.nombre} || Precio base: ${this.precioBase}` + " || " + this.precioConIVA() + " || " + this.aplicarDescuento(50);
         }
     }
 
@@ -145,9 +145,162 @@ function ejercicio03() {
     let mostrar = document.getElementById("mostrar");
     let result = document.getElementById("ejercicio03");
     mostrar.addEventListener("click", function () {
+        result.textContent = "";
         for (let i = 0; i < productos.length; i++) {
             result.textContent += productos[i].mostrar();
             result.textContent += "\n";
         }
     });
+}
+
+function ejercicio04() {
+    class Alumno {
+        constructor(nombre, notas) {
+            this.nombre = nombre;
+            this.notas = notas;
+        }
+
+        agregarNota(nota) {
+            if (nota < 0 || 10 < nota) {
+                alert("Nota no válida");
+                return;
+            }
+            this.notas.push(nota);
+        }
+
+        media() {
+            let media = 0;
+            for (let i = 0; i < this.notas.length; i++) {
+                media += this.notas[i];
+                console.log(i + " " + media);
+            }
+            media /= this.notas.length;
+            return media.toFixed(2);
+        }
+
+        aprobado() {
+            if (this.media() < 5)
+                return false;
+            return true;
+        }
+    }
+
+    const alumnos = [
+        new Alumno("Marcos", [8, 7, 9, 6]),
+        new Alumno("Pepe", [5, 10, 8, 9]),
+        new Alumno("Maria", [5, 4, 6, 5]),
+        new Alumno("Julian", [5, 7, 9, 9])
+    ]
+
+    let result = document.getElementById("ejercicio04");
+    mostrarDatos();
+
+    function mostrarDatos() {
+        result.textContent = "";
+        for (let i = 0; i < alumnos.length; i++) {
+            result.textContent += alumnos[i].nombre + " || ";
+            result.textContent += "Notas: ";
+            for (let j = 0; j < alumnos[i].notas.length; j++) {
+                result.textContent += alumnos[i].notas[j] + " ";
+            }
+            result.textContent += " || ";
+            result.textContent += "Media: " + alumnos[i].media();
+            result.textContent += " || ";
+            result.textContent += "Aprobado: " + (alumnos[i].aprobado() ? "Si" : "No");
+            result.textContent += "\n";
+        }
+    }
+
+    let boton = document.getElementById("añadirNota");
+    boton.addEventListener("click", function () {
+        let nuevaNota = parseFloat(document.getElementById("nuevaNota").value);
+        let alumno = document.getElementById("nombres").value;
+        alumnos[alumno].agregarNota(nuevaNota);
+        mostrarDatos();
+    })
+}
+
+function ejercicio05() {
+    class Tarea {
+        constructor(descripcion, estado) {
+            this.descripcion = descripcion;
+            this.estado = estado;
+        }
+
+        cambiarEstado() {
+            if (this.estado)
+                this.estado = false;
+            else
+                this.estado = true;
+        }
+    }
+
+    class GestorTareas {
+        constructor(tareas) {
+            this.tareas = tareas;
+        }
+
+        agregar(tarea) {
+            this.tareas.push(tarea);
+        }
+
+        eliminar() {
+            this.tareas.pop();
+        }
+
+        listarPendientes() {
+            let tareasPendientes = "";
+            for (let i = 0; i < this.tareas.length; i++) {
+                if (!this.tareas[i].estado)
+                    tareasPendientes += this.tareas[i].descripcion + "\n";
+            }
+
+            if (tareasPendientes === "")
+                return "No hay tareas pendientes...";
+            else
+                return tareasPendientes;
+        }
+
+        listarCompletadas() {
+            let tareasCompletadas = "";
+            for (let i = 0; i < this.tareas.length; i++) {
+                if (this.tareas[i].estado)
+                    tareasCompletadas += this.tareas[i].descripcion + "\n";
+            }
+
+            if (tareasCompletadas === "")
+                return "No hay tareas completadas...";
+            else
+                return tareasCompletadas;
+        }
+    }
+
+    const tareas = [
+        new Tarea("Estudiar cliente (pff que pereza)", false),
+        new Tarea("Estudiar despliegue (pff esto si que no)", false),
+        new Tarea("Sacar la basura", false),
+        new Tarea("Hacer la compra", true)
+    ]
+
+    const gestorTareas = new GestorTareas(tareas);
+
+    let result = document.getElementById("ejercicio05");
+    mostrarDatos();
+
+    function mostrarDatos() {
+        result.textContent = "";
+        for (let i = 0; i < gestorTareas.tareas.length; i++) {
+            result.textContent += "Tarea: " + gestorTareas.tareas[i].descripcion;
+            result.textContent += " || ";
+            result.textContent += "Estado: " + (gestorTareas.tareas[i].estado ? "Completada" : "No completada");
+            result.textContent += "\n";
+        }
+    }
+
+    let boton = document.getElementById("cambiarEstado");
+    boton.addEventListener("click", function () {
+        let tarea = document.getElementById("tareas").value;
+        gestorTareas.tareas[tarea].cambiarEstado();
+        mostrarDatos();
+    })
 }
