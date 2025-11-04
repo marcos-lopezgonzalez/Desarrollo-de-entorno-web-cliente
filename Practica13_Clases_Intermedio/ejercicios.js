@@ -161,7 +161,7 @@ function ejercicio04() {
         }
 
         agregarNota(nota) {
-            if (nota < 0 || 10 < nota) {
+            if (nota < 0 || 10 < nota || typeof(nota) !== Number) {
                 alert("Nota no válida");
                 return;
             }
