@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Examen Parcial de JavaScript</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 900px;
+        margin: 20px auto;
+        line-height: 1.5;
+      }
+      section {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 16px;
+        margin-bottom: 24px;
+      }
+      h2 {
+        background: #f2f2f2;
+        padding: 6px 10px;
+        border-radius: 6px;
+      }
+      input,
+      textarea,
+      button,
+      select {
+        margin-top: 6px;
+        padding: 6px;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+      li {
+        margin: 3px 0;
+        padding: 4px;
+        cursor: pointer;
+      }
+      li:hover {
+        background-color: #f0f0f0;
+      }
+      .completada {
+        text-decoration: line-through;
+        opacity: 0.6;
+        color: #888;
+      }
+      small {
+        color: #b00;
+      }
+      .stock-ok {
+        color: green;
+      }
+      .stock-no {
+        color: #999;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Examen Parcial de JavaScript</h1>
+    <p>
+      <strong>Instrucciones:</strong> No modifiques este archivo HTML. Escribe
+      tu código JavaScript en archivos separados para cada ejercicio y enlázalos
+      mediante <code>&lt;script src="...js"&gt;</code> al final de cada sección.
+    </p>
+
+    <!-- EJERCICIO 1 – MINI-TIENDA -->
+    <section id="ej1">
+      <h2>
+        Ejercicio 1 – Mini-tienda (búsqueda con sugerencias y filtro de stock)
+      </h2>
+      <label for="buscar">Buscar producto:</label><br />
+      <input
+        id="buscar"
+        type="text"
+        placeholder="Escribe al menos dos letras..."
+      />
+      <ul id="sugerencias"></ul>
+
+      <h3>Catálogo de productos</h3>
+      <div id="catalogo"></div>
+
+      <script src="app.js"></script>
+    </section>
+
+    <!-- EJERCICIO 2 – GESTOR DE TAREAS -->
+    <section id="ej2">
+      <h2>Ejercicio 2 – Gestor de tareas</h2>
+      <input id="txtTarea" type="text" placeholder="Nueva tarea" />
+      <button id="btnAdd">Añadir</button>
+      <p id="error" style="color: #b00"></p>
+      <ul id="listaTareas"></ul>
+      <p>Total de tareas: <span id="contador">0</span></p>
+      <button id="btnBorrarTodas">Borrar todas</button>
+
+      <script src="tareas.js"></script>
+    </section>
+
+    <!-- EJERCICIO 3 – ESTADÍSTICAS DE NOTAS -->
+    <section id="ej3">
+      <h2>Ejercicio 3 – Estadísticas de notas</h2>
+      <p>
+        Introduce las notas mediante <code>prompt()</code> desde tu script. El
+        resultado debe mostrarse a continuación:
+      </p>
+      <pre id="salidaNotas">Esperando resultados...</pre>
+
+      <script src="notas.js"></script>
+    </section>
+
+    <!-- EJERCICIO 4 – FORMULARIO DE CONTACTO -->
+    <section id="ej4">
+      <h2>Ejercicio 4 – Formulario de contacto</h2>
+      <form id="formContacto">
+        <label
+          >Nombre completo:<br />
+          <input id="nombre" type="text" />
+          <small id="errNombre"></small> </label
+        ><br /><br />
+
+        <label
+          >Correo electrónico:<br />
+          <input id="email" type="email" />
+          <small id="errEmail"></small> </label
+        ><br /><br />
+
+        <label
+          >Mensaje:<br />
+          <textarea id="mensaje" rows="4"></textarea>
+          <small id="errMensaje"></small> </label
+        ><br /><br />
+
+        <button type="submit">Enviar</button>
+      </form>
+
+      <p id="ok" style="color: green; font-weight: bold"></p>
+
+      <script src="form.js"></script>
+    </section>
+  </body>
+</html>
