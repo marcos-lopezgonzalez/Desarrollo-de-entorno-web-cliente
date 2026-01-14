@@ -6,9 +6,14 @@ btnBuscar.addEventListener("click", () => {
     consultarPais(inputPais.value);
 });
 
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        consultarPais(inputPais.value);
+    }
+});
+
 
 async function consultarPais(pais) {
-    inputPais.textContent = "";
     resultado.textContent = "Cargando...";
 
     if (!validarPais(pais)) {
@@ -27,6 +32,8 @@ async function consultarPais(pais) {
     } catch (error) {
         console.error("ERROR: " + error);
         resultado.textContent = "Error al cargar los datos...";
+    } finally {
+        inputPais.value = "";
     }
 }
 
