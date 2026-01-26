@@ -28,7 +28,7 @@ async function consultarPais(pais) {
             throw new Error("HTTP: " + response.status);
         }
         const data = await response.json();
-
+        console.log(data);
         mostrarPais(data);
     } catch (error) {
         console.error("ERROR: " + error);
